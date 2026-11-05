@@ -13,7 +13,10 @@ class BookService
 
     public function list(): array
     {
-        return $this->repository->findAll();
+        return array_map(
+            fn(Book $book) => $book->toArray(),
+            $this->repository->findAll()
+        );
     }
 
     public function create(array $data): array
