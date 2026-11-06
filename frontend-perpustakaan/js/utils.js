@@ -1,14 +1,5 @@
 /**
- * Mengamankan teks sebelum dimasukkan ke HTML.
- */
-export function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str ?? '';
-    return div.innerHTML;
-}
-
-/**
- * Menampilkan notifikasi sementara.
+ * Menampilkan notifikasi sederhana.
  */
 export function showToast(message, type = 'success') {
     const colors = {
@@ -26,4 +17,20 @@ export function showToast(message, type = 'success') {
     setTimeout(() => {
         toast.remove();
     }, 3000);
+}
+
+/**
+ * Konfirmasi sebelum melakukan tindakan.
+ */
+export function confirmAction(message) {
+    return window.confirm(message);
+}
+
+/**
+ * Menghindari kode HTML berbahaya.
+ */
+export function escapeHtml(value) {
+    const div = document.createElement('div');
+    div.textContent = value ?? '';
+    return div.innerHTML;
 }
